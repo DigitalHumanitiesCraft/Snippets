@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Just a Tutorial</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div xml:id="tutorial">
+            <div xml:id="introduction">
+               <head>Introduction</head>
+               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                  vero eos et accusam et justo duo dolores et ea rebum.</p>
+            </div>
+            <div xml:id="chapter.1">
+               <head>Chapter 1</head>
+               <p>You can decorate text <hi rend="bold">bold</hi> or <hi rend="italic">italic</hi>,
+                     <hi rend="underline">underline</hi>. You can use <code rend="inline"
+                     >&lt;code&gt;</code> for highlight code inline. </p>
+               <list rend="bulleted">
+                  <head>Bulleted List</head>
+                  <item>item 1</item>
+                  <item>item 2</item>
+                  <item>item 3</item>
+               </list>
+               <list rend="numbered">
+                  <head>Numbered List</head>
+                  <item>item 1</item>
+                  <item>item 2</item>
+                  <item>item 3</item>
+               </list>
+               <list rend="simple">
+                  <head>Simple List</head>
+                  <item>item 1</item>
+                  <item>item 2</item>
+                  <item>item 3</item>
+               </list>
+               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                  vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+               <table>
+                  <head>Sample Table</head>
+                  <row>
+                     <cell>Cell 1.1</cell>
+                     <cell>Cell 1.2</cell>
+                     <cell>Cell 1.3</cell>
+                  </row>
+                  <row>
+                     <cell>Cell 2.1</cell>
+                     <cell>Cell 2.2</cell>
+                     <cell>Cell 2.3</cell>
+                  </row>
+               </table>
+
+               <p>Here is a <ref target="http://gams.uni-graz.at/">hyper link</ref> and here is a
+                     <ref type="download">filename</ref> that activates a download. </p>
+               <ab>
+                  <code rend="block" lang="XML">
+                     <![CDATA[
+<?xml version="1.0"?>
+<memo xml:id="memo.1">
+  <to ref="pers.1">Luke Skywalker</to>
+  <from>Rebel Alliance</from>
+  <body>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+  </body>
+</memo>
+]]>
+                  </code>
+                  <caption>This is a XML code example</caption>
+               </ab>
+               <p> You can use images: </p>
+               <ab>
+                  <figure>
+                     <graphic url="img\sample.jpg"/>
+                     <caption>A sample memo</caption>
+                  </figure>
+               </ab>
+            </div>
+            <div xml:id="chapter.2">
+               <head>Chapter 2</head>
+               <p>
+                  <code rend="block" lang="JAVASCRIPT" xml:space="preserve">
+const myHeading = document.querySelector('h1');
+myHeading.textContent = 'Hello world!';
+                  </code>
+                  <caption>This is a JavaScript example</caption>
+               </p>
+
+            </div>
+            <div xml:id="chapter.3">
+               <head>Chapter 2</head>
+               <p> Embed videos: </p>
+               <ab>
+                  <ref type="video" target="vid\sample.mp4"/>
+               </ab>
+            </div>
+
+
+         </div>
+      </body>
+   </text>
+</TEI>
