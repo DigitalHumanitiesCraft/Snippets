@@ -38,7 +38,10 @@
                <head>Chapter 1</head>
                <p>You can decorate text <hi rend="bold">bold</hi> or <hi rend="italic">italic</hi>,
                      <hi rend="underline">underline</hi>. You can use <code rend="inline"
-                        >&lt;code&gt;</code> for highlight code inline, or add a <span type="tooltip">tooltip<note>Hey! I am a tooltip :)</note></span></p>
+                     >&lt;code&gt;</code> for highlight code inline. You can extra highlight <code
+                        rend="element"><![CDATA[<elements>]]></code> and <code rend="attribute"
+                     >@attributes</code>. Also add a <span type="tooltip">tooltip<note>Hey! I am a
+                        tooltip :)</note></span>.</p>
                <list rend="bulleted">
                   <head>Bulleted List</head>
                   <item>item 1</item>

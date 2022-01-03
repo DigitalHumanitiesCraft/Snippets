@@ -90,8 +90,11 @@
                 </div>
                 <!-- Bootstrap core JS-->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"><xsl:text> </xsl:text></script>
+                <!--  -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"><xsl:text> </xsl:text></script>
                 <script>hljs.highlightAll();</script>
+                <!-- copy code -->
+                <script src="js/tutorial.js"><xsl:text> </xsl:text></script>
             </body>
         </html>
     </xsl:template>
@@ -107,6 +110,16 @@
         <div id="{@xml:id}">
             <xsl:apply-templates/>
         </div>
+    </xsl:template>
+    
+    <!--  -->
+    <xsl:template match="t:span[@type = 'tooltip']">
+        <span class="text-decoration-underline">
+            <xsl:if test="t:note">
+                <xsl:attribute name="title" select="normalize-space(t:note)"/>
+            </xsl:if>
+            <xsl:apply-templates select="text()"/>
+        </span>
     </xsl:template>
     
     <xsl:template match="t:ref[@target]">
@@ -145,6 +158,7 @@
 
     <xsl:template match="t:code">
         <code>
+            <xsl:call-template name="rend"/>
             <xsl:apply-templates/>
         </code>
     </xsl:template>
@@ -162,17 +176,22 @@
             </xsl:if>
         </figure>
     </xsl:template>
-
+    
+    
     <xsl:template match="t:ab[t:code[@rend = 'block']]">
-        <xsl:variable name="POSITION" select="count(preceding::t:code[@rend = 'block'])+1"/>
+        <xsl:variable name="POSITION" select="count(preceding::t:code[@rend = 'block']) + 1"/>
         <pre class="m-5">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <!-- copies text in <code> into clipboard -->
+                <button class="btn btn-sm" type="button" onclick="copy(this.parentElement.nextSibling)">Copy</button>
+            </div>
             <code>
                 <xsl:value-of select="t:code[@rend = 'block']"/>
             </code>
             <xsl:if test="t:caption">
-                <figcaption class="figure-caption text-center">
-                    <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', t:caption)"/>
-                </figcaption>
+             <figcaption class="figure-caption text-center">
+                 <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', t:caption)"/>
+             </figcaption>
             </xsl:if>
         </pre>
     </xsl:template>
@@ -239,6 +258,17 @@
                 <xsl:when test="@rend = 'underline'">
                     <xsl:attribute name="class">
                         <xsl:text>text-decoration-underline</xsl:text>
+                    </xsl:attribute>
+                </xsl:when>
+                <!-- styling inline code with same color as code block via highlight.js -->
+                <xsl:when test="@rend = 'attribute'">
+                    <xsl:attribute name="class">
+                        <xsl:text>hljs-attr</xsl:text>
+                    </xsl:attribute>
+                </xsl:when>
+                <xsl:when test="@rend = 'element'">
+                    <xsl:attribute name="class">
+                        <xsl:text>hljs-name</xsl:text>
                     </xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise/>

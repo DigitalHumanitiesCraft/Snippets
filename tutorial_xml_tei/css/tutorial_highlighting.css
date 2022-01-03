@@ -17,18 +17,27 @@ code.hljs {
 }
 .hljs {
     background: #f0f0f0;
-    color: #444
+    color: #444;
 }
 .hljs-comment {
-    color: #888
+    color: #888;
 }
 .hljs-punctuation,
 .hljs-tag {
-    color: #444a
+    color: #444;
 }
+
+code.hljs-name{
+    color: #444;
+}
+
+code.hljs-attr{
+    color: #444;
+}
+
 .hljs-tag .hljs-attr,
 .hljs-tag .hljs-name {
-    color: #444
+    color: #444; 
 }
 .hljs-attribute,
 .hljs-doctag,
