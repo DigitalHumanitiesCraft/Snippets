@@ -14,8 +14,6 @@
 
     <xsl:template match="/">
 
-        <xsl:variable name="TEI_HEADER" select="//t:teiHeader"/>
-
         <html lang="en">
             <head>
                 <meta charset="utf-8"/>
@@ -28,7 +26,7 @@
                     rel="stylesheet"
                     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
                     crossorigin="anonymous"/>
-                <link rel="stylesheet" href="css/source_highlighting.css"/>
+                <link rel="stylesheet" href="css/tutorial_highlighting.css"/>
             </head>
             <body>
                 <header>
@@ -61,7 +59,7 @@
                                 <a href="/" class="d-block p-3 link-dark text-decoration-none"
                                     title="" data-bs-toggle="tooltip" data-bs-placement="right"
                                     data-bs-original-title="Icon-only">
-                                    <i class="bi-bootstrap fs-1"/>
+                                    <i class="bi-bootstrap fs-1"><xsl:text> </xsl:text></i>
                                 </a>
                                 <ul
                                     class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
@@ -80,18 +78,19 @@
                                 </ul>
                             </div>
                         </div>
-                        <main class="col-sm p-3 min-vh-100">
+                        <div class="col-sm p-3 min-vh-100">
                             <h2>
-                                <xsl:value-of select="$TEI_HEADER//t:title[1]"/>
+                                <xsl:value-of select="//t:teiHeader//t:title[1]"/>
                             </h2>
-                            <p class="lead">ABSTRACT</p>
+                            <!-- ? -->
+                            <p class="lead"><xsl:value-of select="//t:encodingDesc/t:projectDesc/t:p"/></p>
                             <xsl:apply-templates select="//t:body"/>
-                        </main>
+                        </div>
                     </div>
                 </div>
                 <!-- Bootstrap core JS-->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"/>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"/>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"><xsl:text> </xsl:text></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"><xsl:text> </xsl:text></script>
                 <script>hljs.highlightAll();</script>
             </body>
         </html>
@@ -113,7 +112,6 @@
     <xsl:template match="t:ref[@target]">
         <xsl:choose>
             <xsl:when test="@type='video'">
-               
                 <video width="320" height="240">
                     <source src="{@target}" type="video/mp4"/>
                     Your browser does not support the video tag.
@@ -134,6 +132,10 @@
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+    
+    <xsl:template match="t:lb">
+        <br/>
+    </xsl:template>
 
     <xsl:template match="t:p | t:ab">
         <p>
@@ -148,25 +150,30 @@
     </xsl:template>
     
     <xsl:template match="t:figure">
+        <xsl:variable name="POSITION" select="count(preceding::t:code[@rend = 'block'])+1"/>
         <figure class="figure container m-3">
             <img src="{t:graphic/@url}" class="img-fluid d-block mx-auto" alt="{t:caption}" width="500" height="500"/>
-                <xsl:if test="t:caption">
+            <xsl:if test="t:caption">
+                <figcaption class="figure-caption text-center">
                     <figcaption class="figure-caption text-center">
-                         <xsl:value-of select="t:caption"/>
-                     </figcaption>
-                </xsl:if>
+                        <xsl:value-of select="concat('Figure ', $POSITION, ': ', t:caption)"/>
+                    </figcaption>
+                 </figcaption>
+            </xsl:if>
         </figure>
     </xsl:template>
 
-    <xsl:template match="t:p[t:code[@rend = 'block']]">
+    <xsl:template match="t:ab[t:code[@rend = 'block']]">
         <xsl:variable name="POSITION" select="count(preceding::t:code[@rend = 'block'])+1"/>
         <pre class="m-5">
             <code>
                 <xsl:value-of select="t:code[@rend = 'block']"/>
             </code>
-            <figcaption class="figure-caption text-center">
-                <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', t:caption)"/>
-            </figcaption>
+            <xsl:if test="t:caption">
+                <figcaption class="figure-caption text-center">
+                    <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', t:caption)"/>
+                </figcaption>
+            </xsl:if>
         </pre>
     </xsl:template>
 
