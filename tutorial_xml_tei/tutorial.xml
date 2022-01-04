@@ -105,17 +105,17 @@
             </div>
             <div xml:id="chapter.2">
                <head>Chapter 2</head>
-               <p>
-                  <code rend="block" lang="JAVASCRIPT" xml:space="preserve">
+               <ab>
+                  <code rend="block" lang="JAVASCRIPT">
 const myHeading = document.querySelector('h1');
 myHeading.textContent = 'Hello world!';
                   </code>
                   <caption>This is a JavaScript example</caption>
-               </p>
+               </ab>
 
             </div>
             <div xml:id="chapter.3">
-               <head>Chapter 2</head>
+               <head>Chapter 3</head>
                <p> Embed videos: </p>
                <ab>
                   <ref type="video" target="vid\sample.mp4"/>
