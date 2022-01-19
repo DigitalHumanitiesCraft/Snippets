@@ -83,7 +83,9 @@
                                 <xsl:value-of select="//t:teiHeader//t:title[1]"/>
                             </h2>
                             <!-- ? -->
-                            <p class="lead"><xsl:value-of select="//t:encodingDesc/t:projectDesc/t:p"/></p>
+                            <div xml:id="abstract" class="lead">
+                                <xsl:apply-templates select="//t:teiHeader/t:profileDesc/t:abstract/t:p"/>
+                            </div>
                             <xsl:apply-templates select="//t:body"/>
                         </div>
                     </div>
