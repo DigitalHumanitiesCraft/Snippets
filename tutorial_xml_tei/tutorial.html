@@ -28,7 +28,7 @@
                      <li class="nav-item"><a href="#introduction" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home"><span>Introduction</span></a></li>
                      <li class="nav-item"><a href="#chapter.1" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home"><span>Chapter 1</span></a></li>
                      <li class="nav-item"><a href="#chapter.2" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home"><span>Chapter 2</span></a></li>
-                     <li class="nav-item"><a href="#chapter.3" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home"><span>Chapter 2</span></a></li>
+                     <li class="nav-item"><a href="#chapter.3" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home"><span>Chapter 3</span></a></li>
                   </ul>
                </div>
             </div>
@@ -120,7 +120,11 @@
                      <p>Here is a <a href="http://gams.uni-graz.at/">hyper link</a> and here is a
                         filename that activates a download. </p>
                      
-                     <pre class="m-5"><div class="d-grid gap-2 d-md-flex justify-content-md-end"><button class="btn btn-sm" type="button" onclick="copy(this.parentElement.nextSibling)">Copy</button></div><code>
+                     <div class="border mb-3">
+                        <div class="nav p-2 justify-content-end"><a class="btn btn-outline-dark btn-sm" type="button" onclick="copy(document.getElementById('d1e159'))">Copy</a></div>
+                        <div class="tab-content mb-4">
+                           <div class="tab-pane active" role="tabpanel">
+                              <pre class="grey lighten-3 mb-0 line-numbers overflow-auto" style="max-height: 500px;"><code id="d1e159">
                      
 &lt;?xml version="1.0"?&gt;
 &lt;memo xml:id="memo.1"&gt;
@@ -132,6 +136,9 @@
 &lt;/memo&gt;
 
                   </code><figcaption class="figure-caption text-center">Code Snippet 1: This is a XML code example</figcaption></pre>
+                           </div>
+                        </div>
+                     </div>
                      
                      <p> You can use images: </p>
                      
@@ -148,16 +155,23 @@
                      
                      <h4>Chapter 2</h4>
                      
-                     <pre class="m-5"><div class="d-grid gap-2 d-md-flex justify-content-md-end"><button class="btn btn-sm" type="button" onclick="copy(this.parentElement.nextSibling)">Copy</button></div><code>
+                     <div class="border mb-3">
+                        <div class="nav p-2 justify-content-end"><a class="btn btn-outline-dark btn-sm" type="button" onclick="copy(document.getElementById('d1e185'))">Copy</a></div>
+                        <div class="tab-content mb-4">
+                           <div class="tab-pane active" role="tabpanel">
+                              <pre class="grey lighten-3 mb-0 line-numbers overflow-auto" style="max-height: 500px;"><code id="d1e185">
 const myHeading = document.querySelector('h1');
 myHeading.textContent = 'Hello world!';
                   </code><figcaption class="figure-caption text-center">Code Snippet 2: This is a JavaScript example</figcaption></pre>
+                           </div>
+                        </div>
+                     </div>
                      
                      </div>
                   
                   <div id="chapter.3">
                      
-                     <h4>Chapter 2</h4>
+                     <h4>Chapter 3</h4>
                      
                      <p> Embed videos: </p>
                      
@@ -168,6 +182,45 @@ myHeading.textContent = 'Hello world!';
                            </video>
                         </p>
                      </div>
+                  
+                  <div class="border mb-3">
+                     <div class="nav p-2 justify-content-end"><a class="btn btn-outline-dark btn-sm" type="button" onclick="copy(document.getElementById('d1e207'))">Copy</a></div>
+                     <div class="tab-content mb-4">
+                        <div class="tab-pane active" role="tabpanel">
+                           <pre class="grey lighten-3 mb-0 line-numbers overflow-auto" style="max-height: 500px;"><code id="d1e207">
+                  
+&lt;?xml version="1.0"?&gt;
+&lt;memo xml:id="memo.1"&gt;
+  &lt;to ref="pers.1"&gt;Luke Skywalker&lt;/to&gt;
+  &lt;from&gt;Rebel Alliance&lt;/from&gt;
+  &lt;body&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+  &lt;/body&gt;
+  &lt;body&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+   &lt;p&gt;Yoda says,&lt;q&gt; "For your support thank I must!"&lt;/q&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/memo&gt;
+
+               </code><figcaption class="figure-caption text-center">Code Snippet 3: This is a long XML code example and has a max heigth and auto overflow.</figcaption></pre>
+                        </div>
+                     </div>
+                  </div>
                   
                   
                   </div>

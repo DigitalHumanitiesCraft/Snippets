@@ -15,15 +15,13 @@
             <p>Information about the source</p>
          </sourceDesc>
       </fileDesc>
-      <encodingDesc>
-         <projectDesc>
-            <!-- ? -->
-            <p>This is the abstract of the tutorial. Lorem ipsum dolor sit amet, consetetur
-               sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-               aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-               rebum.</p>
-         </projectDesc>
-      </encodingDesc>
+      <profileDesc>
+         <abstract>
+            <p>This is the place for the tutorial abstract. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+               tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+               vero eos et accusam et justo duo dolores et ea rebum.</p>
+         </abstract>
+      </profileDesc>
    </teiHeader>
    <text>
       <body>
@@ -121,6 +119,40 @@ myHeading.textContent = 'Hello world!';
                   <ref type="video" target="vid\sample.mp4"/>
                </ab>
             </div>
+            <ab>
+               <code rend="block" lang="XML">
+                  <![CDATA[
+<?xml version="1.0"?>
+<memo xml:id="memo.1">
+  <to ref="pers.1">Luke Skywalker</to>
+  <from>Rebel Alliance</from>
+  <body>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+  </body>
+  <body>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+   <p>Yoda says,<q> "For your support thank I must!"</q></p>
+  </body>
+</memo>
+]]>
+               </code>
+               <caption>This is a long XML code example and has a max heigth and auto overflow.</caption>
+            </ab>
 
 
          </div>

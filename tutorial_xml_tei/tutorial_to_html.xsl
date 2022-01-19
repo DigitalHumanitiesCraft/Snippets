@@ -180,20 +180,26 @@
     
     <xsl:template match="t:ab[t:code[@rend = 'block']]">
         <xsl:variable name="POSITION" select="count(preceding::t:code[@rend = 'block']) + 1"/>
-        <pre class="m-5">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <!-- copies text in <code> into clipboard -->
-                <button class="btn btn-sm" type="button" onclick="copy(this.parentElement.nextSibling)">Copy</button>
+        <div class="border mb-3">
+            <div class="nav p-2 justify-content-end">
+                <a class="btn btn-outline-dark btn-sm" type="button"
+                    onclick="copy(document.getElementById('{generate-id()}'))">Copy</a>
             </div>
-            <code>
-                <xsl:value-of select="t:code[@rend = 'block']"/>
-            </code>
-            <xsl:if test="t:caption">
-             <figcaption class="figure-caption text-center">
-                 <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', t:caption)"/>
-             </figcaption>
-            </xsl:if>
-        </pre>
+            <div class="tab-content mb-4">
+                <div class="tab-pane active" role="tabpanel">
+                    <pre class="grey lighten-3 mb-0 line-numbers overflow-auto" style="max-height: 500px;">
+                        <code id="{generate-id()}">
+                            <xsl:value-of select="t:code[@rend = 'block']"/>
+                        </code>
+                        <xsl:if test="t:caption">
+                            <figcaption class="figure-caption text-center">
+                                <xsl:value-of select="concat('Code Snippet ', $POSITION, ': ', normalize-space(t:caption))"/>
+                            </figcaption>
+                        </xsl:if>
+                    </pre>
+                </div>
+            </div>
+        </div>
     </xsl:template>
 
     <xsl:template match="t:list">
