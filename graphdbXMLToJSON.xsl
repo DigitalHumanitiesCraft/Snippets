@@ -6,8 +6,7 @@
     <xsl:strip-space elements="*"/>
     <xsl:output encoding="UTF-8" method="text" media-type="application/json"/>
 
-    <!--    [s:binding[@name='datensatzkennung']/s:literal[text()='NA 3660']]
--->    
+   
     <xsl:template match="/">
         <xsl:text>[</xsl:text>
         <xsl:for-each select="//s:result">
@@ -19,10 +18,10 @@
                 <xsl:text>"</xsl:text>
                 <xsl:choose>
                     <xsl:when test="s:literal != ''">
-                        <xsl:value-of select="translate(normalize-space(s:literal),'\','/')"/>
+                        <xsl:value-of select="normalize-space(s:literal)"/>
                     </xsl:when>
                     <xsl:when test="s:uri != ''">
-                        <xsl:value-of select="normalize-space(s:uris)"/>
+                        <xsl:value-of select="normalize-space(s:uri)"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:text>-</xsl:text>
