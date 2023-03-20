@@ -159,77 +159,58 @@ Gallus und Volusianus: das angegebene Konsulpaar Trebonianus Gallus und Volusian
         
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
-        <script>
-/*
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+        <script src="LeedsUniExt-normal.js" type="module"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
 
+function getPDF() {           
 
-//<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js">
-
-          console.log("start");
-          window.jsPDF = window.jspdf.jsPDF;
-          
-          const transcription_majuskel = document.getElementsByClassName("transcription")[0];
-          const transcription_minuskel = document.getElementsByClassName("transcription")[1];
-
-
-          // Default export is a4 paper, portrait, using millimeters for units
-          const doc = new jsPDF();
-          //console.log(doc);
-          doc.text("Ambiomarcae | Abirenes", 10, 20);
-          doc.text("CF-GeI-106", 10, 30);
-          doc.text(transcription_majuskel.textContent, 10, 40);
-          doc.text(transcription_minuskel.textContent, 10, 150);
-          doc.fromHTML(
-            source, // HTML string or DOM elem ref.
-            margins.left, // x coord
-            margins.top, {// y coord
-                'width': margins.width, // max width of content on PDF
-                'elementHandlers': specialElementHandlers
-            },
-
-
-          
-          doc.save("a4.pdf");
-
-          */
-
-          function getPDF() {
-            
-          
   const doc = new jsPDF();
- 
-  // We'll make our own renderer to skip this editor
-  var specialElementHandlers = {
-    '#getPDF': function(element, renderer){
-      return true;
-    },
-    '.controls': function(element, renderer){
-      return true;
-    }
-  };
 
-  // All units are in the set measurement for the document
-  // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-  doc.text("Ambiomarcae | Abirenes", 10, 20);
-  doc.text("CF-GeI-106", 10, 30);
-  doc.fromHTML($('.transcription').get(0), 10, 30, {
-    'width': 170, 
-    'elementHandlers': specialElementHandlers
+  let fontUrl = 'LeedsUniExt.ttf';
+  let fontName = 'LeedsUniExt';
+  let font = new FontFace(fontName, 'url(' + fontUrl + ')');
+
+  console.log(font);
+
+  font.load().then(function() {
+    // Embed the font in the PDF document
+    doc.addFileToVFS('LeedsUniExt.ttf', font);
+    //doc.addFont('LeedsUniExt.ttf', 'LeedsUniExt', 'normal');
+    console.log( doc.getFontList() );
+
+    // Set the font for the PDF document
+    doc.setFont('LeedsUniExt');
+
+    // Add some text to the PDF document
+    doc.text('Hello, world!', 10, 10);
+
+    // Ambiomarcae | Abirenes
+    doc.fromHTML($('h3.divine').get(0), 10, 20, {
+      'width': 170
+    });
+    // CF-GeI-106
+    doc.fromHTML($('h4').get(0), 10, 30, {
+      'width': 170
+    });
+    // Majuskel
+    doc.fromHTML($('.transcription').get(0), 10, 40, {
+      'width': 170
+    });
+    // Minuskel
+    doc.fromHTML($('.transcription').get(1), 10, 150, {
+      'width': 170
+    });
+
+    // Save or download the PDF document
+    doc.save('filename.pdf');
   });
-  doc.fromHTML($('.transcription').get(1), 10, 125, {
-    'width': 170, 
-    'elementHandlers': specialElementHandlers
-  });
-
-
-
-  doc.save('Generated.pdf');
 }
+</script>
 
-          
-        </script>
+
 
         <hr/><p style="font-size:90%">Bild 1: Front, EHD HD005413 (C. Witschel), CC BY-SA<br/>Bild 2: Front (Zeichnung), Kakoschke 2017, Nr.1, Rechte vorbehalten</p></div></article></section></main><button onclick="topFunction()" id="gototop" role="button" class="btn" style="background-color:#b61c1b;border:none"><span class="glyphicon glyphicon-chevron-up"> </span></button><footer class="footer"><div class="container"><div class="row"><div class="col-md-6"><h6>Weitere Informationen</h6><p><a href="/o:fercan.arch">Archäologische Klassifikation</a><br/><a href="/archive/objects/context:fercan/methods/sdef:Context/get?mode=notes">Hinweise zur Benutzung</a><br/><a href="/archive/objects/context:fercan/methods/sdef:Context/get?mode=legal">Rechtliches</a><br/><a href="/archive/objects/context:fercan/methods/sdef:Context/get?mode=implementation">Zur technischen Umsetzung</a><br/><a target="_blank" href="/archive/objects/context:gams/methods/sdef:Context/get?mode=dataprotection&amp;locale=de">Datenschutz</a><br/><a href="/archive/objects/context:fercan/methods/sdef:Context/get?mode=imprint">Impressum und Dank</a><br/><a href="/context:age">Onlineportal Alte Geschichte und
 										Altertumskunde</a></p><div class="icons"><a href="/" target="_blank"><img class="footer_icons" src="/templates/img/gamslogo_weiss.gif" height="48" title="Geisteswissenschaftliches Asset Management System" alt="Geisteswissenschaftliches Asset Management System"/></a><a href="https://informationsmodellierung.uni-graz.at/" target="_blank"><img class="footer_icons" src="/templates/img/ZIM_weiss.png" height="48" title="ZIM-ACDH" alt="ZIM-ACDH"/></a><a href="https://www.fwf.ac.at/" target="_blank"><img class="footer_icons" src="/templates/img/fwf-logo-invers.png" height="48" title="FWF" alt="FWF"/></a><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img class="footer_icons" src="/templates/img/by-nc.png" height="45" title="Lizenz" alt="Lizenz"/></a></div></div><div class="col-md-6"><h6>Kontakt</h6><p>Univ.-Prof. Dr. Wolfgang
