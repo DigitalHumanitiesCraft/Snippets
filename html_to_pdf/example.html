@@ -17,72 +17,12 @@
       id="textToPrint"
       style="font-family: 'LeedsUni'; font-weight: normal; font-size: 42px"
     >
-      AaBbCcDdEeFfGgHhŞşIıİi Ọ   ꝭ ∻ 
+      AaBbCcDdÊeFfÊGgHhŞşIıİi Ọ   ꝭ ∻ 
     </p>
     <button onclick="generatePDF()">Generate PDF</button>
   </body>
   <script src="base64Font.js"></script>
   <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
   <script src="https://unpkg.com/html2canvas@latest/dist/html2canvas.min.js"></script>
-  <script>
-    function generatePDF() {
-      // Default export is a4 paper, portrait, using millimeters for units
-      const doc = new jspdf.jsPDF();
-
-      // Add the custom font
-      doc.addFileToVFS("LeedsUni10-12-13.ttf", base64Font);
-      doc.addFont("LeedsUni10-12-13.ttf", "LeedsUni", "normal");
-
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = "ex.jpg";
-      img.onload = function () {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-        const imgData = canvas.toDataURL("image/jpeg");
-
-        doc.addImage(
-          imgData,
-          "JPEG",
-          10,
-          10,
-          img.width / 600,
-          img.height / 600
-        ); // scaling image down
-
-        // load and add the second image
-        const img2 = new Image();
-        img2.crossOrigin = "anonymous";
-        img2.src = "ex2.jpg";
-        img2.onload = function () {
-          const canvas2 = document.createElement("canvas");
-          const ctx2 = canvas2.getContext("2d");
-          canvas2.width = img2.width;
-          canvas2.height = img2.height;
-          ctx2.drawImage(img2, 0, 0, img2.width, img2.height);
-          const imgData2 = canvas2.toDataURL("image/jpeg");
-
-          doc.addImage(
-            imgData2,
-            "JPEG",
-            10,
-            100,
-            img2.width / 600,
-            img2.height / 600
-          ); // scaling image down
-
-          // Get the text to print
-          var textToPrint = document.getElementById("textToPrint").innerText;
-
-          doc.setFont("LeedsUni"); // set font
-          doc.text(textToPrint, 10, 200); // add some text, adjust coordinates to prevent overlap
-
-          doc.save("fercan.pdf");
-        };
-      };
-    }
-  </script>
+  <script src="print-fercan.js"></script>
 </html>
